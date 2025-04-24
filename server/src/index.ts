@@ -10,11 +10,11 @@ import cookieParser from 'cookie-parser';
 // Load environment variables
 dotenv.config();
 
-// Import routes (sẽ tạo sau)
-// import productRoutes from './routes/productRoutes';
-// import authRoutes from './routes/authRoutes';
-// import orderRoutes from './routes/orderRoutes';
-// import sellerRoutes from './routes/sellerRoutes';
+// Import routes
+import productRoutes from './routes/productRoutes';
+import authRoutes from './routes/authRoutes';
+import orderRoutes from './routes/orderRoutes';
+import sellerRoutes from './routes/sellerRoutes';
 
 // Database connection
 const pool = new Pool({
@@ -54,10 +54,10 @@ app.use(express.static(clientBuildPath));
 app.use('/uploads', express.static(path.resolve(__dirname, '../uploads')));
 
 // API Routes
-// app.use('/api/products', productRoutes);
-// app.use('/api/auth', authRoutes);
-// app.use('/api/orders', orderRoutes);
-// app.use('/api/seller', sellerRoutes);
+app.use('/api/products', productRoutes);
+app.use('/api/auth', authRoutes);
+app.use('/api/orders', orderRoutes);
+app.use('/api/seller', sellerRoutes);
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
